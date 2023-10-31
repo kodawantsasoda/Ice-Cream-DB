@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Favorite Ice Cream</h1>
+
+    <form action = '/form' class = "form" method="post">
+        <label for="firstName">First name:</label>
+        <input type ="text" name = "firstName" id ="firstName" placeholder="John" required>
+
+        <label for="lastName">Last name:</label><br>
+        <input type ="text" name = "lastName" id ="lastName" placeholder="Doe" required>
+        
+        <label for="iceCream">Favorite Ice Cream Flavor:</label>
+        <select name="iceCream" id="iceCream">
+            <option value="chocolate">Chocolate</option>
+            <option value="vanilla">Vanilla</option>
+            <option value="strawberry">Strawberry</option>
+        </select>
+
+        <input type="submit" value="Submit"/>
+</body>
+</html>
