@@ -14,9 +14,4 @@ h1{
     width: 100%;
 }
 
-.banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+
