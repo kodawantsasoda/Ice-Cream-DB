@@ -1,0 +1,22 @@
+h1{
+    display: flex;
+    color: #dda15e;
+    background-color: #fefae0;
+    font-size: 70px;
+    height: 350px;
+    align-items: center;
+}
+.outterBanner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    width: 100%;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
