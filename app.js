@@ -24,7 +24,6 @@ db.on('error', (error) =>console.error(error))
 db.once('open', () => console.log('Connected to MongoDB')) 
 
 //api routes
-//get HELPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
 app.get('/taco', async (req, res)=>{
     try {
         const allCustomers = await customerIceCream.find({}).exec();
@@ -41,9 +40,36 @@ app.post('/form', (req, res)=>{
         lastName: req.body.lastName,
         iceCream: req.body.iceCream
     })
-    const newCustomer = customer.save()
-    console.log(req.body) //data = the body of request
-    res.sendFile(__dirname+'/public/success.html')
+    async foundCustomer = await Customer.findOne({ firstName: customer.firstName }, (err, existingCustomer) => {
+        if (err) {
+          // Handle the error
+          res.status(500).json({ error: 'Internal server error' });
+        } else if (existingCustomer) {
+          // A customer with the same email already exists
+          // You can send an error response or take other appropriate action
+          res.status(400).json({ error: 'Customer with the same email already exists' });
+        } else {
+          const newCustomer = customer
+          // Customer doesn't exist, you can add them to the database
+          newCustomer.save((err) => {
+            if (err) {
+              // Handle the error
+              res.status(500).json({ error: 'Internal server error' });
+            } else {
+              // Customer added successfully
+              res.status(200).json({ message: 'Customer added successfully' });
+              console.log(req.body) //data = the body of request
+              res.sendFile(__dirname+'/public/success.html')
+            }
+          });
+        }
+      });
+
+    // const newCustomer = customer.save()
+    // console.log(req.body) //data = the body of request
+    // res.sendFile(__dirname+'/public/success.html')
 })
+
+
 
 app.listen(3000, () => console.log('Server Started'))
