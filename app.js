@@ -34,40 +34,30 @@ app.get('/taco', async (req, res)=>{
 })
 
 //post create
-app.post('/form', (req, res)=>{
+app.post('/form', async (req, res)=>{
+  try{
     const customer = new Customer({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         iceCream: req.body.iceCream
     })
-    async foundCustomer = await Customer.findOne({ firstName: customer.firstName }, (err, existingCustomer) => {
-        if (err) {
-          // Handle the error
-          res.status(500).json({ error: 'Internal server error' });
-        } else if (existingCustomer) {
-          // A customer with the same email already exists
-          // You can send an error response or take other appropriate action
-          res.status(400).json({ error: 'Customer with the same email already exists' });
-        } else {
-          const newCustomer = customer
-          // Customer doesn't exist, you can add them to the database
-          newCustomer.save((err) => {
-            if (err) {
-              // Handle the error
-              res.status(500).json({ error: 'Internal server error' });
-            } else {
-              // Customer added successfully
-              res.status(200).json({ message: 'Customer added successfully' });
-              console.log(req.body) //data = the body of request
-              res.sendFile(__dirname+'/public/success.html')
-            }
-          });
-        }
-      });
 
-    // const newCustomer = customer.save()
-    // console.log(req.body) //data = the body of request
-    // res.sendFile(__dirname+'/public/success.html')
+    const existingCustomer = await Customer.findOne({ firstName: customer.firstName , lastName: customer.lastName})
+
+    if (existingCustomer) {
+      console.log('Customer with the same first name already exists')
+      res.status(400).send('Customer already exists')
+    } 
+    else {
+      const newCustomer = await customer.save()
+      console.log(req.body) //data = the body of request
+      res.sendFile(__dirname+'/public/success.html')
+    }
+  }
+  catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Internal server error');
+  }
 })
 
 
