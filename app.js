@@ -27,9 +27,9 @@ db.once('open', () => console.log('Connected to MongoDB'))
 app.get('/taco', async (req, res)=>{
     try {
         const allCustomers = await customerIceCream.find({}).exec();
-        res.render('viewCustomers', { details: allCustomers });
+        res.json(allCustomers)
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 })
 
@@ -39,18 +39,19 @@ app.post('/form', async (req, res)=>{
     const customer = new Customer({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
         iceCream: req.body.iceCream
     })
 
-    const existingCustomer = await Customer.findOne({ firstName: customer.firstName , lastName: customer.lastName})
+    const existingCustomer = await Customer.findOne({ email:customer.email})
 
     if (existingCustomer) {
-      console.log('Customer with the same first name already exists')
-      res.status(400).send('Customer already exists')
+      console.log('Customer with the same email already exists')
+      res.status(400).send('Customer with the same email already exists')
     } 
     else {
       const newCustomer = await customer.save()
-      console.log(req.body) //data = the body of request
+      console.log(req.body) 
       res.sendFile(__dirname+'/public/success.html')
     }
   }
@@ -59,7 +60,5 @@ app.post('/form', async (req, res)=>{
     res.status(500).send('Internal server error');
   }
 })
-
-
 
 app.listen(3000, () => console.log('Server Started'))

@@ -46,7 +46,7 @@ body{
     font-family: headerFont;
 }
 
-.buttonFlex a{
+.buttonFlex button, a{
     text-decoration: none;
     background-color: #fefae0;
     color: #dda15e;
@@ -55,9 +55,61 @@ body{
     font-size: 30px;
 }
 
-.buttonFlex a:hover{
+.buttonFlex button:hover, a:hover{
     background-color: #dda15e;
     color: #fefae0;
     border-color: black;
     transition: 0.3s;
+}
+
+.buttonFlex button:active{
+    background-color: #fefae0;
+    color: #dda15e;
+}
+
+#form, #viewCustomer{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    border: 5px solid black;
+    z-index: 2;
+    text-align: center;
+    background-color: #dda15e;
+    font-family: headerFont;
+    font-size: 30px;
+}
+#form li{
+    list-style-type: none;
+}
+#form input[type=text], #form input[type=password], #form input[type=email], #form select{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    background: #fefae0;
+    font-size: 15px;
+    font-family: headerFont;
+  }
+#form select{
+    margin-bottom: 10px;
+}
+#form input[type=submit], #form button, #viewCustomer button{
+    text-decoration: none;
+    background-color: #fefae0;
+    color: #dda15e;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+}
+#form input[type=submit]:hover, #form button:hover{
+    background-color: #dda15e;
+    color: #fefae0;
+    border: 3px solid black;
+}
+#form input[type=submit]:active, #form button:active{
+    background-color: #fefae0;
+    color: #dda15e;
+    border: 3px solid #dda15e;
 }

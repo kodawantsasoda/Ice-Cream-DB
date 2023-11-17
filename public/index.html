@@ -5,19 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ice Cream Shop</title>
     <link rel = "stylesheet" href = "stylesheet.css">
-    <script type="iceCreamForm" src="iceCreamForm.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <div class = "outterBanner">
         <div>
             <div class = "header">
-                <h1>Uncle Koko's Ice Cream Shop</h1>
+                <h1>Uncle Koko's Ice Cream DB</h1>
             </div>
             <div class = "buttonFlex">
-                <a href="iceCreamForm.html">New Customer</a>
-                <a href="/taco">View Customers</a>
+                <button onclick="openForm()">Add Customer</button>
+                <button id = "showCustomerInfo">View Customers</button>
             </div>
+            <div id = "viewCustomer">
+                <button id = "closeButton">Close</button>
+            </div>
+            <script>
+            $('#showCustomerInfo').on('click', function() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/taco', // Update with your server route
+                    success: function(data) {
+                    // Assuming data is an array of customer objects
+                    displayCustomerInfo(data);
+                    },
+                    error: function(error) {
+                    console.error('Error fetching customer info:', error);
+                    }
+                });
+            });
+            function displayCustomerInfo(customers) {
+                // Assuming each customer object has 'name' and 'email' properties
+                let popupContent = '<ul>';
+                customers.forEach(customer => {
+                    popupContent += `<li>${customer.firstName} - ${customer.lastName} - ${customer.iceCream}</li>`
+                });
+                popupContent += '</ul>';
+                popupContent += '<button id="closeButton">Close</button>'
+
+                // Update the popup content with the received data
+                $('#viewCustomer').html(popupContent);
+                // Show the popup
+                $('#viewCustomer').show();
+
+                $('#closeButton').on('click', function() {
+                    $('#viewCustomer').hide();
+                });
+            }
+            </script>
+            <script>
+                function openForm() {
+                  document.getElementById("form").style.display = "block"
+                }
+                function closeForm() {
+                  document.getElementById("form").style.display = "none"
+                }
+            </script>
         </div>
     </div>
+        <form action = '/form' id = "form" method="post">
+            <h2>Favorite Ice Cream</h2>
+            <ul>
+                <li>
+                    <label for="firstName">First name:</label>
+                    <input type ="text" name = "firstName" id ="firstName" placeholder="John" required>
+                </li>
+                <li>
+                    <label for="lastName">Last name:</label>
+                    <input type ="text" name = "lastName" id ="lastName" placeholder="Doe" required>
+                </li>
+                <li>
+                    <label for="email">Email:</label>
+                    <input type ="email" name = "email" id ="email" placeholder="johndoe@gmail.com" required>
+                </li>
+                <li>
+                    <label for="iceCream">Favorite Ice Cream Flavor:</label>
+                    <select name="iceCream" id="iceCream">
+                        <option value="chocolate">Chocolate</option>
+                        <option value="vanilla">Vanilla</option>
+                        <option value="strawberry">Strawberry</option>
+                    </select>
+                </li>
+                <li>   
+                    <input type="submit" value="Submit"/>
+                    <button onclick = "closeForm()">Cancel</button>
+                </li>
+            </ul>
 </body>
 </html>

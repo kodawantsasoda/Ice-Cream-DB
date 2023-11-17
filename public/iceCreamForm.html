@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ice Cream Form</title>
+    <link rel = "stylesheet" href = "stylesheet.css">
 </head>
 <body>
-    <h1>Favorite Ice Cream</h1>
+    <h2>Favorite Ice Cream</h2>
 
     <form action = '/form' class = "form" method="post">
-        <label for="firstName">First name:</label>
-        <input type ="text" name = "firstName" id ="firstName" placeholder="John" required>
-
-        <label for="lastName">Last name:</label><br>
-        <input type ="text" name = "lastName" id ="lastName" placeholder="Doe" required>
-        
-        <label for="iceCream">Favorite Ice Cream Flavor:</label>
-        <select name="iceCream" id="iceCream">
-            <option value="chocolate">Chocolate</option>
-            <option value="vanilla">Vanilla</option>
-            <option value="strawberry">Strawberry</option>
-        </select>
-
-        <input type="submit" value="Submit"/>
+        <ul>
+            <li>
+                <label for="firstName">First name:</label>
+                <input type ="text" name = "firstName" id ="firstName" placeholder="John" required>
+            </li>
+            <li>
+                <label for="lastName">Last name:</label>
+                <input type ="text" name = "lastName" id ="lastName" placeholder="Doe" required>
+            </li>
+            <li>
+                <label for="email">Email:</label>
+                <input type ="email" name = "email" id ="email" placeholder="johndoe@gmail.com" required>
+            </li>
+            <li>
+                <label for="iceCream">Favorite Ice Cream Flavor:</label>
+                <select name="iceCream" id="iceCream">
+                    <option value="chocolate">Chocolate</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="strawberry">Strawberry</option>
+                </select>
+            </li>
+            <li>   
+                <input type="submit" value="Submit"/>
+            </li>
+        </ul>
 </body>
 </html>

@@ -10,6 +10,10 @@ const customerIceCreamSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true,
+    },
     iceCream: {
         type: String,
         required: true,

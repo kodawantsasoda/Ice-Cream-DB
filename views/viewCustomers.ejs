@@ -1,21 +1,16 @@
-<div>
-  <a href="/">Get Details</a>
-  </div>
-  <hr>
-  
-  <% if(details!=null) { %>
-  <table>
-  <tr>
-      <th>First Name</th>
-      <th>Last Name </th>
-      <th>Ice Cream</th>
-  </tr>
-  <% details.forEach(function(item){ %>
-  <tr>
-      <td><%= item.firstName%></td>
-      <td><%= item.lastName %></td>
-      <td><%= item.iceCream%></td>
-  </tr>
-  <% }) %>
-  </table>
-  <% } %>
+<% if(details!=null) { %>
+<table>
+<tr>
+    <th>First Name</th>
+    <th>Last Name </th>
+    <th>Favorite Ice Cream</th>
+</tr>
+<% details.forEach(function(item){ %>
+<tr>
+    <td><%= item.firstName%></td>
+    <td><%= item.lastName %></td>
+    <td><%= item.iceCream%></td>
+</tr>
+<% }) %>
+</table>
+<% } %>
