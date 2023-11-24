@@ -47,12 +47,12 @@ app.post('/form', async (req, res)=>{
 
     if (existingCustomer) {
       console.log('Customer with the same email already exists')
-      res.status(400).send('Customer with the same email already exists')
+      res.status(400).send('Customer with the same email already exists!!!')
     } 
     else {
       const newCustomer = await customer.save()
       console.log(req.body) 
-      res.sendFile(__dirname+'/public/success.html')
+      res.send('Customer Added!')
     }
   }
   catch (error) {
