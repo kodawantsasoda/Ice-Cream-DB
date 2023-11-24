@@ -103,12 +103,12 @@ body{
     border: none;
     font-size: 20px;
 }
-#form input[type=submit]:hover, #form button:hover{
+#form input[type=submit]:hover, #form button:hover, #viewCustomer button:hover{
     background-color: #dda15e;
     color: #fefae0;
     border: 3px solid black;
 }
-#form input[type=submit]:active, #form button:active{
+#form input[type=submit]:active, #form button:active, #viewCustomer button:active{
     background-color: #fefae0;
     color: #dda15e;
     border: 3px solid #dda15e;
