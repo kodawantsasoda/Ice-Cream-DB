@@ -81,7 +81,8 @@ body{
     font-family: headerFont;
     font-size: 30px;
 }
-#form li{
+
+#form li, #viewCustomer li{
     list-style-type: none;
 }
 #form input[type=text], #form input[type=password], #form input[type=email], #form select{
@@ -91,7 +92,7 @@ body{
     background: #fefae0;
     font-size: 15px;
     font-family: headerFont;
-  }
+}
 #form select{
     margin-bottom: 10px;
 }
@@ -112,4 +113,19 @@ body{
     background-color: #fefae0;
     color: #dda15e;
     border: 3px solid #dda15e;
+}
+#viewCustomer{
+    display: none;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally within the container */
+    text-align: left;
+    padding: 20px;
+}
+
+#viewCustomer table{
+    background-color: white;
+    border-spacing: 5px;
+}
+#viewCustomer table tr, #viewCustomer table td, #viewCustomer table th{
+    padding: 10px;
 }

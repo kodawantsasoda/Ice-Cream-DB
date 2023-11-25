@@ -15,11 +15,11 @@ $(document).ready(function() {
     function displayCustomerInfo(customers) {
         document.getElementById("viewCustomer").style.display = "flex"
         // Assuming each customer object has 'firstName', 'lastName', and 'iceCream' properties
-        let popupContent = '<ul>';
+        let popupContent = '<table><tr><th>First Name</th><th>Last Name</th><th>Ice Cream</th></tr>';
         customers.forEach(customer => {
-            popupContent += `<li>${customer.firstName} - ${customer.lastName} - ${customer.iceCream}</li>`
+            popupContent += `<tr><td>${customer.firstName}</td><td>${customer.lastName}</td><td>${customer.iceCream}</td></tr>`
         });
-        popupContent += '</ul>';
+        popupContent += '</table>';
         popupContent += '<button id="closeButton">Close</button>';
 
         // Update the popup content with the received data
