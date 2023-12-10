@@ -6,9 +6,7 @@
     <title>Ice Cream Shop</title>
     <link rel = "stylesheet" href = "stylesheet.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="ajaxOnSubmt.js"></script>
     <script src="openCloseForm.js"></script>
-    <script src="test.js"></script>
 </head>
 <body>
     <div class = "outterBanner">
@@ -23,6 +21,7 @@
             <div id = "viewCustomer">
                 <button id = "closeButton">Close</button>
             </div>
+            <script src="ajaxViewCustomer.js"></script>
         </div>
     </div>
         <form action = '/form' id = "form" method="post">
@@ -52,6 +51,9 @@
                     <input type="submit" value="Submit"/>
                     <button type="button" onclick = "closeForm()">Cancel</button>
                 </li>
+                <li><div id="messageContainer"></div></li>
             </ul>
+            <script src="ajaxOnSubmit.js"></script>
+        </form>
 </body>
 </html>

@@ -104,6 +104,10 @@ body{
     border: none;
     font-size: 20px;
 }
+#viewCustomer button {
+    border: 3px solid black;
+    color: black;
+}
 #form input[type=submit]:hover, #form button:hover, #viewCustomer button:hover{
     background-color: #dda15e;
     color: #fefae0;
@@ -120,12 +124,22 @@ body{
     align-items: center; /* Center items horizontally within the container */
     text-align: left;
     padding: 20px;
+    max-width: 500px;
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 #viewCustomer table{
-    background-color: white;
     border-spacing: 5px;
+    background-color: black;
+    margin-bottom: 10px;
 }
 #viewCustomer table tr, #viewCustomer table td, #viewCustomer table th{
     padding: 10px;
+    background-color: #fefae0;
+}
+#viewCustomer table th{
+    padding: 10px;
+    background-color: #fefae0;
 }
